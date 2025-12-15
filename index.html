@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking the Echo Chamber | Research Presentation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-cyan': '#00f0ff',
+                        'neon-red': '#ff0055',
+                        'dark-bg': '#050505',
+                        'card-bg': '#0f1115',
+                        'border-gray': '#1f2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fill-bar': 'fillBar 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00f0ff, 0 0 10px #00f0ff' },
+                            '100%': { boxShadow: '0 0 20px #00f0ff, 0 0 30px #00f0ff' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fillBar: {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--target-width)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e7eb;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05) 0%, transparent 20%);
+        }
+        
+        .glass-card {
+            background: rgba(15, 17, 21, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cyan-text-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .red-text-glow {
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 overflow-x-hidden">
+
+    <!-- Header Section -->
+    <header class="max-w-7xl mx-auto mb-12 relative animate-slide-up" style="animation-delay: 0.1s;">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-gray-800 pb-8">
+            <!-- Logos -->
+            <div class="flex items-center gap-6">
+                <!-- AUC Logo Placeholder - Replace img src with your file if needed -->
+                <div class="bg-white p-2 rounded-lg w-40 h-12 flex items-center justify-center overflow-hidden">
+                    <span class="text-blue-900 font-bold font-serif text-lg leading-none text-center">AUC<br><span class="text-[0.6rem] font-sans font-normal text-gray-500">The American University in Cairo</span></span>
+                </div>
+                <!-- TikTok Logo -->
+                <div class="text-white text-4xl animate-pulse-slow">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <h3 class="text-white font-bold text-xl">Omar El Morshidy</h3>
+                <p class="text-gray-400 text-sm">The American University in Cairo</p>
+                <p class="text-neon-red text-xs font-bold uppercase tracking-widest mt-1">Fall 2025</p>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <p class="text-neon-cyan text-sm font-bold tracking-[0.2em] mb-2">RHET 1020 RESEARCH PRESENTATION</p>
+            <h1 class="text-5xl md:text-7xl font-display font-bold uppercase leading-tight">
+                Breaking The <span class="text-neon-cyan cyan-text-glow">Echo</span><br>
+                <span class="text-neon-red red-text-glow">Chamber</span>
+            </h1>
+            <p class="mt-4 text-xl text-gray-300 max-w-3xl border-l-4 border-neon-cyan pl-4">
+                Algorithmic Interventions for Eating Disorder Stigma: Shifting the Burden from User Willpower to Platform Architecture
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+
+        <!-- Column 1 (Left) -->
+        <div class="md:col-span-4 flex flex-col gap-6">
+            
+            <!-- Research Objectives -->
+            <section class="glass-card rounded-2xl p-6 relative overflow-hidden animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-bullseye text-white"></i> RESEARCH OBJECTIVES
+                </h2>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex gap-3">
+                        <span class="text-neon-cyan font-bold">></span>
+                        <span><strong class="text-white">Goal:</strong> Investigate effective algorithmic interventions to reduce ED stigma.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-neon-cyan font-bold">></span>
+                        <span><strong class="text-white">Shift Burden:</strong> Move safety responsibility from adolescent willpower to <span class="text-neon-cyan">platform architecture</span>.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-neon-cyan font-bold">></span>
+                        <span><strong class="text-white">Provide Framework:</strong> Concrete guide for policymakers & engineering teams.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Methodology -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-microscope text-white"></i> METHODOLOGY
+                </h2>
+                <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-800 mb-4">
+                    <h3 class="text-white font-bold mb-1">Qualitative Content Analysis</h3>
+                    <p class="text-xs text-gray-400">Analysis of primary digital artifacts and tech policy documents through the lens of Humane Technology.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-gray-800/30 p-3 rounded border-l-2 border-neon-red">
+                        <strong class="block text-white mb-1">DATA COLLECTION</strong>
+                        TikTok UI mechanics, Transparency Reports, Community Guidelines.
+                    </div>
+                    <div class="bg-gray-800/30 p-3 rounded border-l-2 border-neon-cyan">
+                        <strong class="block text-white mb-1">ANALYSIS LENS</strong>
+                        Center for Humane Technology "Ethical Design" Principles.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theoretical Framework -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-book text-white"></i> THEORETICAL FRAMEWORK
+                </h2>
+                <div class="space-y-4">
+                    <div class="relative pl-4 border-l-2 border-neon-cyan">
+                        <h3 class="text-neon-cyan font-bold text-sm">Social Comparison Theory (Festinger)</h3>
+                        <p class="text-xs text-gray-400 mt-1">TikTok hyper-accelerates "Upward Comparisons" (idealized bodies) leading to dissatisfaction.</p>
+                    </div>
+                    <div class="relative pl-4 border-l-2 border-neon-red">
+                        <h3 class="text-neon-red font-bold text-sm">Stigma Model (Griffiths)</h3>
+                        <p class="text-xs text-gray-400 mt-1">Algorithm implicitly "values" disordered bodies with high engagement, reinforcing self-stigma.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Limitations -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.5s;">
+                <h2 class="text-xl font-bold mb-4 text-gray-400 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i> LIMITATIONS
+                </h2>
+                <ol class="list-decimal list-inside text-xs text-gray-400 space-y-2">
+                    <li><strong class="text-gray-300">Access:</strong> No access to source code; limited to public UI & Policy docs.</li>
+                    <li><strong class="text-gray-300">Time:</strong> Constraints prevented longitudinal study of intervention effects.</li>
+                </ol>
+            </section>
+        </div>
+
+        <!-- Column 2 (Middle) -->
+        <div class="md:col-span-4 flex flex-col gap-6">
+            
+            <!-- The Validation Loop -->
+            <section class="rounded-2xl p-6 border border-neon-red bg-opacity-10 bg-red-900 animate-slide-up" style="animation-delay: 0.3s;">
+                <h2 class="text-xl font-bold mb-2 text-neon-red flex items-center gap-2">
+                    <i class="fas fa-sync-alt fa-spin" style="animation-duration: 3s;"></i> THE "VALIDATION LOOP"
+                </h2>
+                <p class="text-center text-xs text-gray-400 italic mb-6">How the architecture traps the user</p>
+
+                <div class="flex flex-col gap-2 relative">
+                    <!-- Step 1 -->
+                    <div class="bg-gray-900 border border-gray-700 p-4 rounded-xl relative z-10 hover:border-white transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-gray-800 w-8 h-8 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-injured text-gray-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">1. Insecurity</h4>
+                                <p class="text-xs text-gray-400">User seeks validation for body issues.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="h-8 flex justify-center items-center text-neon-cyan animate-bounce">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-gray-900 border border-gray-700 p-4 rounded-xl relative z-10 hover:border-neon-cyan transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-gray-800 w-8 h-8 rounded-full flex items-center justify-center">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">2. Engagement</h4>
+                                <p class="text-xs text-gray-400">Algo logs "Interest" in harmful content.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="h-8 flex justify-center items-center text-neon-cyan animate-bounce" style="animation-delay: 0.5s;">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-red-900/20 border border-neon-red p-4 rounded-xl relative z-10 shadow-[0_0_15px_rgba(255,0,85,0.2)]">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-neon-red w-8 h-8 rounded-full flex items-center justify-center">
+                                <i class="fas fa-robot text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">3. Cultivation</h4>
+                                <p class="text-xs text-gray-300">"Echo Chamber" validates self-stigma.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Evidence -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-gavel text-white"></i> THE EVIDENCE: "THEY KNEW"
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fab fa-meta text-blue-400"></i>
+                            <h3 class="font-bold text-blue-400 text-sm">Meta (Project Mercury)</h3>
+                        </div>
+                        <p class="text-xs text-gray-300">
+                            Internal research proved Instagram worsened body image for <strong class="text-white border-b border-white">1 in 3 teen girls</strong> but prioritized engagement.
+                        </p>
+                    </div>
+
+                    <div class="bg-pink-900/20 p-4 rounded-lg border border-pink-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fab fa-tiktok text-pink-400"></i>
+                            <h3 class="font-bold text-pink-400 text-sm">TikTok Time Limits</h3>
+                        </div>
+                        <p class="text-xs text-gray-300">
+                            Execs knew prompts only reduced usage by <strong class="text-white border-b border-white">1.5 minutes</strong>, yet launched them as primary "safety features."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Fixes Fail -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.5s;">
+                <h2 class="text-xl font-bold mb-4 text-gray-400 flex items-center gap-2">
+                    <i class="fas fa-times-circle"></i> WHY CURRENT FIXES FAIL
+                </h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-800 p-3 rounded-lg">
+                        <h4 class="text-neon-red text-xs font-bold mb-1">1. ALGO-SPEAK</h4>
+                        <p class="text-[10px] text-gray-400 mb-2">Bans fail because users evolve language.</p>
+                        <div class="bg-black p-2 rounded text-[10px] font-mono text-neon-cyan">
+                            "anorexia" → "anoreksja"
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg">
+                        <h4 class="text-neon-red text-xs font-bold mb-1">2. CO-OCCURRENCE</h4>
+                        <p class="text-[10px] text-gray-400">Safe tags like <strong class="text-gray-300">#recovery</strong> are cross-pollinated with toxic content by the AI.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Column 3 (Right) -->
+        <div class="md:col-span-4 flex flex-col gap-6">
+            
+            <!-- Friction Mismatch -->
+            <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-balance-scale text-white"></i> THE FRICTION MISMATCH
+                </h2>
+                
+                <div class="mb-6">
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-neon-red">Harmful Content</span>
+                        <span class="text-white">ZERO FRICTION</span>
+                    </div>
+                    <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-neon-red animate-fill-bar" style="--target-width: 100%; width: 0;"></div>
+                    </div>
+                    <p class="text-right text-[10px] text-gray-500 mt-1">Auto-play, Infinite Scroll</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-blue-400">Help Resources</span>
+                        <span class="text-gray-400">HIGH FRICTION</span>
+                    </div>
+                    <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 animate-fill-bar" style="--target-width: 25%; width: 0;"></div>
+                    </div>
+                    <p class="text-right text-[10px] text-gray-500 mt-1">Search, Click, Read</p>
+                </div>
+            </section>
+
+            <!-- Architectural Solutions -->
+            <section class="rounded-2xl p-6 border border-neon-cyan bg-cyan-900/10 animate-slide-up" style="animation-delay: 0.5s;">
+                <h2 class="text-xl font-bold mb-6 text-neon-cyan flex items-center gap-2">
+                    <i class="fas fa-layer-group"></i> ARCHITECTURAL SOLUTIONS
+                </h2>
+
+                <div class="space-y-6">
+                    <!-- Solution 1 -->
+                    <div class="flex gap-4 group">
+                        <div class="mt-1">
+                            <i class="fas fa-leaf text-neon-cyan group-hover:animate-bounce"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">1. Algorithmic Palate Cleansers</h4>
+                            <p class="text-xs text-gray-400 mt-1">If "high-risk cluster" detected, system <strong class="text-white">forcibly injects</strong> neutral content (Nature, Comedy) to break the flow state.</p>
+                        </div>
+                    </div>
+
+                    <!-- Solution 2 -->
+                    <div class="flex gap-4 group">
+                        <div class="mt-1">
+                            <i class="fas fa-eye-slash text-neon-red group-hover:animate-pulse"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">2. Zero Metric Mode</h4>
+                            <p class="text-xs text-gray-400 mt-1">A safety toggle hiding Likes/Views. Stops ED from becoming a <strong class="text-white">competitive sport</strong> of numbers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Solution 3 -->
+                    <div class="flex gap-4 group">
+                        <div class="mt-1">
+                            <i class="fas fa-user-shield text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">3. Professional Context</h4>
+                            <p class="text-xs text-gray-400 mt-1">Verified experts add "Context Notes" to viral trends, fighting misinformation with <strong class="text-white">trusted authority</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Block -->
+            <section class="bg-gray-900 rounded-2xl p-6 border-l-4 border-white shadow-lg animate-slide-up transform hover:scale-105 transition-transform" style="animation-delay: 0.6s;">
+                <i class="fas fa-quote-left text-3xl text-gray-700 mb-2"></i>
+                <p class="text-sm font-bold text-gray-200 italic leading-relaxed">
+                    "Adolescents cannot fight a supercomputer with willpower alone. If the trap is algorithmic, the cure must be algorithmic."
+                </p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto mt-12 mb-8 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500">
+        <div>© 2025 Omar El Morshidy</div>
+        <div class="flex items-center gap-4">
+            <span>References available via QR Code</span>
+            <span class="text-gray-300">AUC Rhetoric Dept.</span>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Interaction Script
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Breaking the Echo Chamber - Loaded");
+            
+            // Add staggered animation to list items if needed
+            const items = document.querySelectorAll('.animate-slide-up');
+            items.forEach((item, index) => {
+                // item.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
