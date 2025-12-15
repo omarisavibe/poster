@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breaking the Echo Chamber | Research Presentation</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <script>
@@ -81,18 +78,17 @@
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, #9ca3af);
+        /* Specific Gradients for the Title based on screenshot */
+        .echo-gradient {
+            background: linear-gradient(to bottom, #00f0ff 20%, #9ca3af 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .cyan-text-glow {
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-        }
-        
-        .red-text-glow {
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+        .chamber-gradient {
+            background: linear-gradient(to bottom, #6b7280 0%, #ff0055 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Custom Scrollbar */
@@ -111,21 +107,13 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-8 overflow-x-hidden">
+<body class="min-h-screen px-4 pt-4 md:px-8 md:pt-8 pb-0 overflow-x-hidden">
 
-    <!-- Header Section -->
     <header class="max-w-7xl mx-auto mb-12 relative animate-slide-up" style="animation-delay: 0.1s;">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-gray-800 pb-8">
-            <!-- Logos -->
-            <div class="flex items-center gap-6">
-                <!-- AUC Logo Placeholder - Replace img src with your file if needed -->
-                <div class="bg-white p-2 rounded-lg w-40 h-12 flex items-center justify-center overflow-hidden">
-                    <span class="text-blue-900 font-bold font-serif text-lg leading-none text-center">AUC<br><span class="text-[0.6rem] font-sans font-normal text-gray-500">The American University in Cairo</span></span>
-                </div>
-                <!-- TikTok Logo -->
-                <div class="text-white text-4xl animate-pulse-slow">
-                    <i class="fab fa-tiktok"></i>
-                </div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-gray-800 pb-4 mb-8 z-20 relative">
+            <div class="bg-white p-2 rounded-lg w-48 h-14 flex items-center justify-center overflow-hidden">
+                <img src="auc-logo.png" alt="AUC The American University in Cairo" class="h-full w-auto object-contain">
             </div>
 
             <div class="text-right">
@@ -135,25 +123,32 @@
             </div>
         </div>
 
-        <div class="mt-8">
-            <p class="text-neon-cyan text-sm font-bold tracking-[0.2em] mb-2">RHET 1020 RESEARCH PRESENTATION</p>
-            <h1 class="text-5xl md:text-7xl font-display font-bold uppercase leading-tight">
-                Breaking The <span class="text-neon-cyan cyan-text-glow">Echo</span><br>
-                <span class="text-neon-red red-text-glow">Chamber</span>
-            </h1>
-            <p class="mt-4 text-xl text-gray-300 max-w-3xl border-l-4 border-neon-cyan pl-4">
-                Algorithmic Interventions for Eating Disorder Stigma: Shifting the Burden from User Willpower to Platform Architecture
-            </p>
+        <div class="relative w-full">
+            <div class="absolute -top-10 right-0 md:right-10 text-gray-800 opacity-20 pointer-events-none select-none z-0">
+                 <i class="fab fa-tiktok text-[15rem] md:text-[25rem] transform rotate-12"></i>
+            </div>
+
+            <div class="relative z-10">
+                <p class="text-neon-cyan text-sm md:text-base font-bold tracking-[0.2em] mb-2 uppercase">RHET 1020 RESEARCH PRESENTATION</p>
+                
+                <h1 class="font-display font-black uppercase leading-[0.85] tracking-tighter text-6xl md:text-9xl">
+                    <div class="text-white">BREAKING</div>
+                    <div class="text-white">THE</div>
+                    <div class="echo-gradient">ECHO</div>
+                    <div class="chamber-gradient">CHAMBER</div>
+                </h1>
+                
+                <p class="mt-8 text-xl text-gray-300 max-w-3xl border-l-4 border-neon-cyan pl-4 bg-black/40 backdrop-blur-sm p-2 rounded-r-lg">
+                    Algorithmic Interventions for Eating Disorder Stigma: Shifting the Burden from User Willpower to Platform Architecture
+                </p>
+            </div>
         </div>
     </header>
 
-    <!-- Main Grid Layout -->
-    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
 
-        <!-- Column 1 (Left) -->
         <div class="md:col-span-4 flex flex-col gap-6">
             
-            <!-- Research Objectives -->
             <section class="glass-card rounded-2xl p-6 relative overflow-hidden animate-slide-up" style="animation-delay: 0.2s;">
                 <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
@@ -175,7 +170,6 @@
                 </ul>
             </section>
 
-            <!-- Methodology -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
                     <i class="fas fa-microscope text-white"></i> METHODOLOGY
@@ -196,7 +190,6 @@
                 </div>
             </section>
 
-            <!-- Theoretical Framework -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
                     <i class="fas fa-book text-white"></i> THEORETICAL FRAMEWORK
@@ -213,7 +206,6 @@
                 </div>
             </section>
             
-            <!-- Limitations -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.5s;">
                 <h2 class="text-xl font-bold mb-4 text-gray-400 flex items-center gap-2">
                     <i class="fas fa-exclamation-triangle"></i> LIMITATIONS
@@ -225,10 +217,8 @@
             </section>
         </div>
 
-        <!-- Column 2 (Middle) -->
         <div class="md:col-span-4 flex flex-col gap-6">
             
-            <!-- The Validation Loop -->
             <section class="rounded-2xl p-6 border border-neon-red bg-opacity-10 bg-red-900 animate-slide-up" style="animation-delay: 0.3s;">
                 <h2 class="text-xl font-bold mb-2 text-neon-red flex items-center gap-2">
                     <i class="fas fa-sync-alt fa-spin" style="animation-duration: 3s;"></i> THE "VALIDATION LOOP"
@@ -236,7 +226,6 @@
                 <p class="text-center text-xs text-gray-400 italic mb-6">How the architecture traps the user</p>
 
                 <div class="flex flex-col gap-2 relative">
-                    <!-- Step 1 -->
                     <div class="bg-gray-900 border border-gray-700 p-4 rounded-xl relative z-10 hover:border-white transition-colors">
                         <div class="flex items-center gap-3">
                             <div class="bg-gray-800 w-8 h-8 rounded-full flex items-center justify-center">
@@ -249,12 +238,10 @@
                         </div>
                     </div>
 
-                    <!-- Arrow -->
                     <div class="h-8 flex justify-center items-center text-neon-cyan animate-bounce">
                         <i class="fas fa-arrow-down"></i>
                     </div>
 
-                    <!-- Step 2 -->
                     <div class="bg-gray-900 border border-gray-700 p-4 rounded-xl relative z-10 hover:border-neon-cyan transition-colors">
                         <div class="flex items-center gap-3">
                             <div class="bg-gray-800 w-8 h-8 rounded-full flex items-center justify-center">
@@ -267,12 +254,10 @@
                         </div>
                     </div>
 
-                    <!-- Arrow -->
                     <div class="h-8 flex justify-center items-center text-neon-cyan animate-bounce" style="animation-delay: 0.5s;">
                         <i class="fas fa-arrow-down"></i>
                     </div>
 
-                    <!-- Step 3 -->
                     <div class="bg-red-900/20 border border-neon-red p-4 rounded-xl relative z-10 shadow-[0_0_15px_rgba(255,0,85,0.2)]">
                         <div class="flex items-center gap-3">
                             <div class="bg-neon-red w-8 h-8 rounded-full flex items-center justify-center">
@@ -287,7 +272,6 @@
                 </div>
             </section>
 
-            <!-- The Evidence -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
                     <i class="fas fa-gavel text-white"></i> THE EVIDENCE: "THEY KNEW"
@@ -310,13 +294,12 @@
                             <h3 class="font-bold text-pink-400 text-sm">TikTok Time Limits</h3>
                         </div>
                         <p class="text-xs text-gray-300">
-                            Execs knew prompts only reduced usage by <strong class="text-white border-b border-white">1.5 minutes</strong>, yet launched them as primary "safety features."
+                            Execs knew prompts only reduced usage by <strong class="text-white border-b border-white">1.5 minutes</strong>, yet launched them as primary "safety features".
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- Why Fixes Fail -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.5s;">
                 <h2 class="text-xl font-bold mb-4 text-gray-400 flex items-center gap-2">
                     <i class="fas fa-times-circle"></i> WHY CURRENT FIXES FAIL
@@ -338,10 +321,8 @@
 
         </div>
 
-        <!-- Column 3 (Right) -->
         <div class="md:col-span-4 flex flex-col gap-6">
             
-            <!-- Friction Mismatch -->
             <section class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.4s;">
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
                     <i class="fas fa-balance-scale text-white"></i> THE FRICTION MISMATCH
@@ -370,14 +351,12 @@
                 </div>
             </section>
 
-            <!-- Architectural Solutions -->
             <section class="rounded-2xl p-6 border border-neon-cyan bg-cyan-900/10 animate-slide-up" style="animation-delay: 0.5s;">
                 <h2 class="text-xl font-bold mb-6 text-neon-cyan flex items-center gap-2">
                     <i class="fas fa-layer-group"></i> ARCHITECTURAL SOLUTIONS
                 </h2>
 
                 <div class="space-y-6">
-                    <!-- Solution 1 -->
                     <div class="flex gap-4 group">
                         <div class="mt-1">
                             <i class="fas fa-leaf text-neon-cyan group-hover:animate-bounce"></i>
@@ -388,7 +367,6 @@
                         </div>
                     </div>
 
-                    <!-- Solution 2 -->
                     <div class="flex gap-4 group">
                         <div class="mt-1">
                             <i class="fas fa-eye-slash text-neon-red group-hover:animate-pulse"></i>
@@ -399,7 +377,6 @@
                         </div>
                     </div>
 
-                    <!-- Solution 3 -->
                     <div class="flex gap-4 group">
                         <div class="mt-1">
                             <i class="fas fa-user-shield text-purple-400"></i>
@@ -412,7 +389,6 @@
                 </div>
             </section>
 
-            <!-- Quote Block -->
             <section class="bg-gray-900 rounded-2xl p-6 border-l-4 border-white shadow-lg animate-slide-up transform hover:scale-105 transition-transform" style="animation-delay: 0.6s;">
                 <i class="fas fa-quote-left text-3xl text-gray-700 mb-2"></i>
                 <p class="text-sm font-bold text-gray-200 italic leading-relaxed">
@@ -424,8 +400,7 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="max-w-7xl mx-auto mt-12 mb-8 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500">
+    <footer class="max-w-7xl mx-auto mt-12 pb-6 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500">
         <div>© 2025 Omar El Morshidy</div>
         <div class="flex items-center gap-4">
             <span>References available via QR Code</span>
